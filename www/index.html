@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
+            https://cordova.apache.org/docs/en/latest/
+        Some notes:
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src * 'unsafe-inline';  media-src *;  img-src * data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        
+        <link rel="stylesheet" href="css/themes/test.css" />
+        <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+
+        <!-- <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/> -->
+		<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css"/>     
+		<script src="js/jquery-2.1.4.min.js"></script>          
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+        <!-- <script src=""></script> -->
+
+        <link rel="stylesheet" href="css/index.css">
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div data-role="page" id="guidePage">
+            <div data-role="header">
+                <h1>臺北市社會住宅</h1>
+                
+            </div>
+            <div data-role="main" class="ui-content">
+                <div style="text-align:center">
+                    <img src="img/house.png" width="40%"/>
+                </div> 				
+                <p>
+                    &emsp;&emsp;台北市的高房價是大家有目共睹的，因此柯市長說出，既然買不起至少要租得起。<br>
+                    &emsp;&emsp;蓋社宅是一個能夠抑制房租的方法，但是目前的社宅數目還是相當不足，如果北市能夠擁有5萬戶社宅，就能夠有效抑制高租金。<br>
+                    &emsp;&emsp;由此可知，社宅是對於未來年輕人非常重要。
+                </p>
+                <div style="text-align:center">
+                    <a href="#homePage"  class="ui-btn ui-corner-all ui-btn-inline ui-shadow" >我知道了</a>
+                </div>
+
+            </div>
+            <div style="text-align:center" data-role="footer" data-position="fixed" >
+                <p>學號:A7251150&ensp;作者:吳仡釩</p>
+            </div>
+        </div>
+
+        <div data-role="page" id="homePage">
+            <div data-role="header" data-tap-toggle="false">
+                <h1>臺北市社會住宅</h1>				
+            </div>
+            <div data-role="content" class="ui-content" > <!-- ui-content:頁面添加內邊距和外邊距-->
+                
+                <h1 id="totalHouse">總棟數(含規劃中):</h1>
+                <h1 id="okHouse">總棟數(不含規劃中):</h1>
+                <h1 id="totalHousehold">總戶數(含規劃中):</h1>
+                <h1 id="okHousehold">總戶數(不含規劃中):</h1>
+                <h1 id="livePeople">目前居住人口數:</h1>
+                <h1 id="okHouseRate">目前完工比例:</h1>
+                <h1 id="targetRate">以5萬戶為目標的完成率:</h1>
+                <br><br><br><br><br>
+                <div>
+                    <img src="img/family.png" style="vertical-align:bottom; width:60%"/>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" >
+                <div data-role="navbar" data-iconpos="bottom">
+                    <ul>
+                        <li><a href="#" data-icon="home"  class="ui-btn-active ui-state-persist">首頁</a></li>
+                        <li><a href="#houseListPage" data-icon="bullets">列表</a></li>
+                        <li><a href="#QAPage" data-icon="info">Q&A</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div data-role="page" id="houseListPage">
+            <div data-role="header" >
+                <h1>社宅列表</h1>
+            </div>
+            <div data-role="content" class="ui-content"> <!-- ui-content:頁面添加內邊距和外邊距-->
+                <ul data-role="listview" id="hList">
+                    <li></li>
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed" >
+                <div data-role="navbar" data-iconpos="bottom">
+                    <ul>
+                        <li><a href="#homePage" data-icon="home">首頁</a></li>
+                        <li><a href="#houseListPage" data-icon="bullets"  class="ui-btn-active ui-state-persist">列表</a></li>
+                        <li><a href="#QAPage" data-icon="info">Q&A</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        <div data-role="page" id="QAPage">
+            <div data-role="header" >
+                <h1>常見問題Q&A</h1>
+            </div>
+            <div data-role="content" class="ui-content"> <!-- ui-content:頁面添加內邊距和外邊距-->
+                <div data-role="collapsible-set">
+                    <div data-role="collapsible">
+                        <h1>Q1：「社會住宅」是什麼？</h1>
+                        <p>A：社會住宅(social housing)，在歐洲又稱「社會出租住宅」(Social Rented Housing，更強調其「只租不賣」的精神)，簡單的說是指政府（直接或補助）興建或民間擁有之合於居住標準的房屋，採只租不賣模式，以低於市場租金或免費出租給所得較低的家戶或特殊的弱勢對象的住宅。</p>       
+                    </div>
+                    <div data-role="collapsible">               
+                        <h1>Q2：為什麼會有「社會住宅」？</h1>
+                        <p>A：社會住宅從歐陸出現起已超過百年的歷史，是源於都市化過程中住宅市場供需機能之侷限性，致使中低所得者買不起住宅，引起社會矛盾與政治衝突，或造成諸如個人健康、家庭離散、就業、教育、社區整合、環境衛生、治安等社會問題，經過諸多社會改革倡議後，最後採行以政府扮演起住宅市場外的補救角色，以提供「只租不售」的社會住宅來解決弱勢人民的居住問題。迄今，「社會住宅」業已成為先進資本主義發達國家住宅政策重要一環，以下簡要條列各國公有社會住宅占住宅總量比例：荷蘭 34%、英國 20%、丹麥 19%、芬蘭 18%、瑞典 18%、歐盟平均 14%、美國 6.2%、日本 6.06%、香港 29%、新加坡 8.7%。</p>
+                    </div>
+                    <div data-role="collapsible">
+                        <h1>Q3：「社會住宅」提供照顧的對象是哪些人？</h1>
+                        <p>A：社會住宅提供照的對象為弱勢人民，大略可以分為三類：①社經弱勢（在社會中，因種族、職業、性別、性取向...等，因此於經濟上較無法支持目前租賃或購置住宅的民眾，如中低收入者、原住民)；②身心弱勢（於精神上、生理上、心理上有障者，如智能障礙、肢體障礙、精神障礙者等）；③階段性的弱勢（如家暴婦女、災民、遊民等，在有些國家對象甚至擴大至青年、學生等）。經濟或社會弱勢者，是指低所得家庭、單親家庭，生育子女三人以上、65歲以上之老人、受家庭暴力或性侵害之受害者及其子女、身心障礙者、感染人類免疫缺乏病毒者或罹患後天免疫缺乏症候群、原住民、災民、遊民等(第七條)。</p>
+                    </div>
+                    <div data-role="collapsible">
+                        <h1>Q4：社會住宅如何能照顧不同弱勢對象（如老人、身障、原住民等）的居住居求？</h1>
+                        <p>A：鑑於弱勢對象有其差異與不同需求，社會住宅將會藉由妥適的硬體空間與軟體服務來照顧滿足。在硬體空間上，社會住宅非單一形式、大小的集合大樓，僅使所有的弱勢者集中居住，而是在住宅空間的規劃設計上配合各類弱勢者的居住需求，如提供無障礙空間設施，以滿足如身障者、老人等族群的使用；尊重原住民文化的傳統空間形式。另在空間大小的規劃上，針對單身獨居、單親帶著孩子、小家庭等，配合提供不同大小的居住房型。在軟體服務上，社會住宅不僅只提供空間的居住，還會有配套的軟體社會福利服務，即因應弱勢對象引入不同的服務需求，協助其在居住穩定後，就學、就業、醫療等各生活面向上也可以得到資源，確保其維持一定生活品質。</p>
+                    </div>
+                    <div data-role="collapsible">
+                        <h1>Q5：「社會住宅」與早期政府所推的「國民住宅」有何不同？</h1>
+                        <p>A：「國民住宅」乃是政府過去因應房價上漲，為滿足國民購屋置產需求而興建低於市場價格的「出售式」住宅，為一次性住宅投資政策。但由於興建數量不多（僅占住宅總量 3.5%）致使效果有限，更因低於市場價格經脫手便可獲利，造成了所謂「國宅樂透」的扭曲現象。以及，縱使國宅低於市場價格，仍屬中收入所得家庭才有能力購買，對弱勢家戶來說仍是無法負擔。相對地，社會住宅強調的是「只租不售」，不是用來解決民眾置產問題，而是為了照顧困難於市場上覓得居所的弱勢者，以低於市場租金及多元住宅型態，並搭配社會福利措施的介入，是一種永續循環性的住宅公共投資。公共住宅的設立是為了提供合適和安全的公共租屋給符合申請資格的低收入家庭、老人和殘疾人。公共住宅可能有各種規模和類型，從分散的單戶住宅以及高層的高齡公裕街有可能(bollom，2008)。</p>
+                    </div>
+                    <div data-role="collapsible">
+                        <h1>Q6：台灣弱勢人民居住問題很嚴重嗎？</h1>
+                        <p>A：台灣歷任政府的住宅政策，是建立在「住者有其屋」與「市場萬能」這兩組意識型態上，因此所有的措施，都是驅使人民節衣縮食成為「買得起」的痛苦屋奴。相對的，對於「買不起」的弱勢人民之居住問題，則是長期漠視、依據本聯盟初步推估，這些台灣的弱勢人民數量約占全國總戶數為 16.50%。面對當前房價飆漲與所得分配惡化形勢，他們除了飽經「買不起」「租不起」的經濟壓力外，更遭受「進不了」「住不了」等等空間歧視與社會排除。因此，台灣弱勢人民居住問題的確很嚴重！該數據對象包括低收入者、獨居老人、身心障礙者、家暴與性侵害者、AIDS、平地原住民、遊民等弱勢族群，然尚未計入單親、災民、中低所得者、失業勞工、離家就業青年等新弱勢族群。</p>
+                    </div>
+                    <div data-role="collapsible">
+                        <h1>Q7：弱勢人民居住問題是政府的責任嗎？</h1>
+                        <p>A：住宅是一種基本人權，已為歐美先進國家之普遍共識，也載明於聯合國〈經濟社會與文化權利國際公約〉第 11 條第 1 款：「…各國承認人人有權為他自己和家庭獲得相當的生活水準，包括足夠的食物、衣著和住房，並能不斷改進生活條件。各締約國將採取適當的步驟保證實現這一權利…」。又我國於 2009 年經立法院三讀通過並由總統發佈《公民與政治權利國際公約及經濟社會文化權利國際公約施行法》，確認上述公約條文已具有國內法的效力。因此，政府的確有責任要「保證實現」弱勢人民有足夠的「住房」權利。</p>
+                    </div>
+                    <div data-role="collapsible">
+                        <h1>Q8：照顧弱勢人民為什麼不是採補貼方式而是要提供社會住宅？</h1>
+                        <p>A：對於部分弱勢人民，的確可藉由（租金、貸款）補貼使其於住宅市場解決居住問題，然而，仍會有許多經濟與社會弱勢者居住問題是無法透過補貼來解決，這包括了找不到合適的居所（如獨居老人、肢體障礙者需要完善無障礙空間），遭歧視排擠（如精障、智障、愛滋病患者），以及因應緊急危難（如災民、家暴與性侵受害婦女的庇護安置）等。也就是說，除了以租金補貼照顧部分經濟弱勢居住需求外，針對其它市場無法提供滿足的弱勢居住需求，還是需要透過提供社會住宅來解決因應。</p>
+                    </div>
+                    <div data-role="collapsible">
+                        <h1>Q9：不是已經有公有出租住宅為何還要社會住宅？</h1>
+                        <p>A：過去政府的確也提供若干符合社會住宅定義的住宅，包括了平宅、出租國宅、婦女庇護住宅、老人住宅、原住民住宅等，然其數量極為有限，總計僅佔全國住宅總量 0.08%！因此，台灣當然是需要社會住宅！</p>
+                    </div>
+                    <div data-role="collapsible">
+                        <h1>Q10:台灣需要多少數量的社會住宅？</h1>
+                        <p>A：由於政府長期以來對於弱勢居住問題的漠視，台灣目前並沒有針對各個不同弱勢對象居住現況的官方調查統計資訊，更遑論推估出較準確的社會住宅需求數量。因此，政府應將弱勢人民居住現況與需求調查列為當下優先工作。然鑑於台灣現有社會住宅數量僅僅佔住宅總量 0.08%，這毫無疑問遠遠低於實際需求，故必須興建已殆無疑義。為凝聚目標並給政府有明確壓力，本聯盟提出以占全國住宅總量 5%為現階段最低標準，其估算依據為：弱勢家戶比率（16.5%）×無自有住宅比率（30%，事實上弱勢居民無自有住宅比率應高於此值）≒5%。</p>
+                    </div>
+                </div>                 
+                <br><br>
+                <a src="https://housing.kcg.gov.tw/LFA/LFA08/LFA08002017.jsp">資料來源by:https://housing.kcg.gov.tw/LFA/LFA08/LFA08002017.jsp</a>
+            </div>
+            <div data-role="footer" data-position="fixed" >
+                <div data-role="navbar" data-iconpos="bottom">
+                    <ul>
+                        <li><a href="#homePage" data-icon="home">首頁</a></li>
+                        <li><a href="#houseListPage" data-icon="bullets">列表</a></li>
+                        <li><a href="#" data-icon="info" class="ui-btn-active ui-state-persist">Q&A</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

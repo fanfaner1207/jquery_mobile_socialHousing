@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.pccu.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>SocialHousing</name>
+    <description>The best solution to high rents is social housing provided by the government, so I wrote an app to let people in Taiwan know the current progress of social housing.</description>
+    <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <platform name="android">
+          <allow-intent href="market:*" />
+          <icon src="www/img/house.png" />
+        </platform>
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+</widget>

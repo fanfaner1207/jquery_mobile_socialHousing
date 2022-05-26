@@ -1,0 +1,32 @@
+<div data-role="page" id="detailPage">
+    <div data-role="header" >
+        <h1>社宅詳細資訊</h1>				
+    </div>
+    <div data-role="content" class="ui-content"> <!-- ui-content:頁面添加內邊距和外邊距-->
+        <!-- <div>  -->
+            
+            <!-- <input id="clickMe" type="button" value="refresh" onclick="mapLocation();" /> -->
+        <!-- </div>  -->
+        <!-- Leaflet + OpenStreetMap (OSM)  -->
+        <!-- https://quip.com/vdqYAiFHHkaV -->
+        <div id="map"></div>
+        
+        <div id="data"></div>  
+    </div>
+    <div data-role="footer" data-position="fixed" >
+        <div data-role="navbar" data-iconpos="bottom">
+            <ul>
+                <li><a href="#homePage" data-icon="home">首頁</a></li>
+                <li><a href="#houseListPage" data-icon="bullets">列表</a></li>
+                <li><a href="#QAPage" data-icon="info">Q&A</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="cordova.js"></script>
+    <script src='js/map.js'></script>
+    <!-- <script>
+        window.onload = function(){
+            onDeviceReady();
+        } //引用函式
+    </script>    -->
+</div> 
